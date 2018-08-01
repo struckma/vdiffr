@@ -44,6 +44,11 @@ print_plot.ggplot <- function(p, title = "") {
 }
 
 #' @export
+print_plot.grob <- function(p, title) {
+  grid::grid.draw(p)
+}
+
+#' @export
 print_plot.recordedplot <- function(p, title) {
   grDevices::replayPlot(p)
 }
