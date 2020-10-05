@@ -125,7 +125,9 @@ diff_lines <- function(case,
   diff <- diffobj::diffChr(
     before,
     after,
-    format = "raw"
+    format = "raw",
+    # For reproducibility
+    disp.width = 80
   )
 
   # No format() method?
