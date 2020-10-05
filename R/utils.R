@@ -203,3 +203,6 @@ next_element <- function(element, group, direction = 1) {
 
   group[next_position]
 }
+
+# Silence R CMD check NOTE
+freetypeharfbuzz::font_info
