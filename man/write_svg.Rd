@@ -17,7 +17,7 @@ a \link[grDevices:recordplot]{recorded plot}, or any object with a
 }
 \description{
 This is the default SVG writer for vdiffr test cases. It uses
-embedded versions of \href{http://r-lib.github.io/svglite/}{svglite},
+embedded versions of \href{https://svglite.r-lib.org}{svglite},
 \href{https://harfbuzz.github.io/}{harfbuzz}, and the Liberation and
 Symbola fonts in order to create deterministic SVGs.
 }

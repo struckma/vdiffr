@@ -14,7 +14,7 @@ make_testcase_file <- function(fig_name) {
 #' Default SVG writer
 #'
 #' This is the default SVG writer for vdiffr test cases. It uses
-#' embedded versions of [svglite](http://r-lib.github.io/svglite/),
+#' embedded versions of [svglite](https://svglite.r-lib.org),
 #' [harfbuzz](https://harfbuzz.github.io/), and the Liberation and
 #' Symbola fonts in order to create deterministic SVGs.
 #'
