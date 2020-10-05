@@ -15,7 +15,11 @@ vars <- c(
   NOT_CRAN = "true"
 )
 withr::with_envvar(vars, {
-  test_results <- testthat::test_dir(mock_test_dir, reporter = "silent")
+  test_results <- testthat::test_dir(
+    mock_test_dir,
+    reporter = "silent",
+    stop_on_failure = FALSE
+  )
 })
 
 mock_cases_outputs <- purrr::quietly(purrr::safely(collect_cases))(mock_pkg_dir)
