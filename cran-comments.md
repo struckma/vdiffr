@@ -1,7 +1,4 @@
 
-Should fix the CRAN failures.
-
-
 ## Test environments
 
 * local OS X install, R release
