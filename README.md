@@ -92,8 +92,7 @@ However it's easier to run the shiny application `manage_cases()`.
 With this app you can:
 
 - Check how a failed case differs from its expected output using three
-  widgets: Toggle (click to swap the images), Slide and Diff. If you
-  use Github, you may be familiar with [the last two](https://github.com/blog/817-behold-image-view-modes).
+  widgets: Toggle (click to swap the images), Slide and Diff.
 
 - Validate cases. You can do so groupwise (all new cases or all failed
   cases) or on a case by case basis. When you validate a failed case,

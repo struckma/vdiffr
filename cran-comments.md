@@ -1,4 +1,6 @@
 
+Removed offending URL.
+
 ## Test environments
 
 * local OS X install, R release
