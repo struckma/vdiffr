@@ -22,7 +22,7 @@ Encoding: UTF-8
 Description: An extension to the 'testthat' package that makes it easy
     to add graphical unit tests. It provides a Shiny application to
     manage the test cases.
-License: GPL-3 | file LICENSE
+License: MIT + file LICENSE
 LazyData: true
 ByteCompile: true
 Depends:
