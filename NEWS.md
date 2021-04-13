@@ -1,6 +1,8 @@
 
 # vdiffr (development version)
 
+- vdiffr is now licensed as MIT (#95).
+
 
 # vdiffr 0.3.3
 
