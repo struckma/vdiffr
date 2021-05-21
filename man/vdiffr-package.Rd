@@ -24,8 +24,6 @@ Useful links:
 Authors:
 \itemize{
   \item Thomas Lin Pedersen \email{thomas.pedersen@rstudio.com} (\href{https://orcid.org/0000-0002-5147-4711}{ORCID})
-  \item Carl Sutherland (jg-imagediff library)
-  \item David Hong (TwoFace library)
   \item T Jake Luciani \email{jake@apache.org} (svglite)
   \item Matthieu Decorde \email{matthieu.decorde@ens-lyon.fr} (svglite)
   \item Vaudor Lise \email{lise.vaudor@ens-lyon.fr} (svglite)
@@ -34,9 +32,6 @@ Authors:
 Other contributors:
 \itemize{
   \item RStudio [copyright holder]
-  \item Humble Software (jg-imagediff library) [copyright holder]
-  \item  jQuery Foundation (jQuery library) [copyright holder]
-  \item  jQuery contributors (jQuery library; authors listed in inst/htmlwidgets/lib/jquery-authors.txt) [contributor, copyright holder]
   \item Tony Plate (svglite: Early line dashing code) [contributor]
   \item David Gohel (svglite: Line dashing code and raster code) [contributor]
   \item Yixuan Qiu (svglite: Improved styles; polypath implementation) [contributor]

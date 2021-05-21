@@ -1,33 +1,32 @@
 vdiffr_skip_stale()
 
-test_that("Mismatches are skipped except on CI and interactively", {
-  notcran_result <- subset_results(test_results, "test-failed.R", "mismatches are hard failures when NOT_CRAN is set")[[1]]
-  expect_match(notcran_result$message, "Figures don't match: myplot.svg\n")
-  expect_is(notcran_result, "expectation_failure")
-
-  failed_result <- subset_results(test_results, "test-failed.R", "mismatches are hard failures when CI is set")[[1]]
-  expect_match(failed_result$message, "Figures don't match: myplot.svg\n")
-  expect_is(failed_result, "expectation_failure")
-
-  skipped_result <- subset_results(test_results, "test-failed.R", "mismatches are skipped when NOT_CRAN is unset")[[1]]
-  expect_match(skipped_result$message, "Skipping on CRAN")
-  expect_is(skipped_result, "expectation_skip")
+test_that("ggplot doppelgangers pass", {
+  p1_orig <- ggplot2::ggplot(mtcars, ggplot2::aes(disp)) + ggplot2::geom_histogram()
+  expect_doppelganger("myplot", p1_orig, "")
 })
 
-test_that("Duplicated expectations issue warning", {
-  expect_true(any(grepl("Duplicated expectations: myplot", mock_cases_outputs$warnings)))
+test_that("base doppelgangers pass", {
+  p_base <- function() plot(mtcars$disp)
+  expect_doppelganger("myplot2", p_base, "")
+
+  p_base_symbol <- function() {
+    plot.new()
+    text(0.5, 0.8, expression(x[i] + over(x, y)), font = 5)
+  }
+
+  expect_doppelganger("Base doppelganger with symbol", p_base_symbol, "")
 })
 
-test_that("Doppelgangers pass", {
-  ggplot_result <- subset_results(test_results, "test-passed.R", "ggplot doppelgangers pass")[[1]]
-  expect_is(ggplot_result, "expectation_success")
-
-  # Test seems to depend on new engine
-  skip_if(getRversion() < "4.1.0")
-
-  base_result <- subset_results(test_results, "test-passed.R", "base doppelgangers pass")[[1]]
-  expect_is(base_result, "expectation_success")
+test_that("grid doppelgangers pass", {
+  p_grid <- function() {
+    grid::grid.newpage()
+    grid::grid.text("foobar", gp = grid::gpar(fontsize = 10.1))
+    grid::grid.text("foobaz", 0.5, 0.1, gp = grid::gpar(fontsize = 15.05))
+  }
+  expect_doppelganger("Grid doppelganger", p_grid)
 })
+
+skip("TODO")
 
 test_that("skip mismatches if vdiffr is stale", {
   withr::local_envvar(c(NOT_CRAN = "true"))

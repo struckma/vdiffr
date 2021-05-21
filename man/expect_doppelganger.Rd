@@ -4,14 +4,7 @@
 \alias{expect_doppelganger}
 \title{Does a figure look like its expected output?}
 \usage{
-expect_doppelganger(
-  title,
-  fig,
-  path = NULL,
-  ...,
-  verbose = NULL,
-  writer = write_svg
-)
+expect_doppelganger(title, fig, path = deprecated(), ..., writer = write_svg)
 }
 \arguments{
 \item{title}{A brief description of what is being tested in the
@@ -26,20 +19,11 @@ sanitzed form, with special characters converted to \code{"-"}).}
 \item{fig}{A figure to test. This can be a ggplot object, a
 recordedplot, or more generally any object with a \code{print} method.
 
-For plots that can't be represented as printable objects, you can
-pass a function. This function must construct the plot and print
-it.}
+If you need to test a plot with non-printable objects (e.g. base
+plots), \code{fig} can be a function that generates and prints the
+plot, e.g. \code{fig = function() plot(1:3)}.}
 
-\item{path}{The path where the test case should be stored, relative
-to the \verb{tests/figs/} folder. If \code{NULL} (the default), the current
-testthat context is used to create a subfolder. Supply an empty
-string \code{""} if you want the figures to be stored in the root
-folder.}
-
-\item{...}{Additional arguments passed to \code{\link[testthat:compare]{testthat::compare()}} to
-control specifics of comparison.}
-
-\item{verbose}{Soft-deprecated. See the debugging section.}
+\item{path, ...}{TODO: Deprecated}
 
 \item{writer}{A function that takes the plot, a target SVG file,
 and an optional plot title. It should transform the plot to SVG
@@ -47,53 +31,12 @@ in a deterministic way and write it to the target file. See
 \code{\link[=write_svg]{write_svg()}} (the default) for an example.}
 }
 \description{
-\code{expect_doppelganger()} takes a figure to check visually.
-\itemize{
-\item If the figure has yet to be validated, the test is skipped. Call
-\code{\link[=manage_cases]{manage_cases()}} to validate the new figure, so vdiffr knows what
-to compare against.
-\item If the test has been validated, \code{fig} is compared to the
-validated figure. If the plot differs, a failure is issued
-(except on CRAN, see section on regression testing below).
-
-Either fix the problem, or call \code{\link[=manage_cases]{manage_cases()}} to validate the
-new figure appearance.
+\code{expect_doppelganger()} is a testthat expectation for graphical
+plots. It generates SVG snapshots that you can review graphically
+with \code{\link[testthat:snapshot_accept]{testthat::snapshot_review()}}. You will find more information
+about snapshotting in the \href{https://testthat.r-lib.org/articles/snapshotting.html}{testthat snapshots vignette}.
 }
-}
-\section{Regression testing versus Unit testing}{
-
-
-Failures to match a validated appearance are only reported when the
-tests are run locally, on Travis, Appveyor, or any environment
-where the \code{Sys.getenv("CI")} or \code{Sys.getenv("NOT_CRAN")} variables
-are set. Because vdiffr is more of a monitoring than a unit testing
-tool, it shouldn't cause R CMD check failures on the CRAN machines.
-
-Checking the appearance of a figure is inherently fragile. It is
-similar to testing for errors by matching exact error messages:
-these messages are susceptible to change at any time. Similarly,
-the appearance of plots depends on a lot of upstream code, such as
-the way margins and spacing are computed. vdiffr uses a special
-ggplot2 theme that should change very rarely, but there are just
-too many upstream factors that could cause breakages. For this
-reason, figure mismatches are not necessarily representative of
-actual failures.
-
-Visual testing is not an alternative to writing unit tests for the
-internal data transformations performed during the creation of your
-figure. It is more of a monitoring tool that allows you to quickly
-check how the appearance of your figures changes over time, and to
-manually assess whether changes reflect actual problems in your
-package.
-
-If you need to override the default vdiffr behaviour on CRAN (not
-recommended) or Travis (for example to run the tests in a
-particular builds but not others), set the \code{VDIFFR_RUN_TESTS}
-environment variable to "true" or "false".
-}
-
 \section{Debugging}{
-
 
 It is sometimes difficult to understand the cause of a failure.
 This usually indicates that the plot is not created
@@ -103,9 +46,7 @@ deterministically. Potential culprits are:
 setting a seed.
 \item The plot depends on some system library. For instance sf plots
 depend on libraries like GEOS and GDAL. It might not be possible
-to test these plots with vdiffr (which can still be used for
-manual inspection, add a \code{\link[testthat:skip]{testthat::skip()}} before the
-\code{expect_doppelganger()} call in that case).
+to test these plots with vdiffr.
 }
 
 To help you understand the causes of a failure, vdiffr
