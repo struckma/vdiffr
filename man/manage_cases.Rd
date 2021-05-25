@@ -17,8 +17,8 @@ manage_cases(
 name. See \code{\link[devtools:as.package]{devtools::as.package()}} for more information.}
 
 \item{filter}{If not \code{NULL}, only tests with file names matching this
-regular expression will be executed. Matching be performed on the file
-name after it has been stripped of \code{"test-"} and \code{".R"}.}
+regular expression will be executed. Matching is performed on the file
+name after it's stripped of \code{"test-"} and \code{".R"}.}
 
 \item{invert}{should the regexp supplied to \code{filter} be inverted? Defaults to \code{FALSE}.}
 

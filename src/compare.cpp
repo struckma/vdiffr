@@ -2,12 +2,11 @@
 #include <vector>
 #include <fstream>
 #include <algorithm>
-#include <Rcpp.h>
-
+#include <cpp11/R.hpp>
 #include "algo-it.h"
 
 int compare_throw() {
-  Rcpp::stop("vdiffr error: unable to read svg files");
+  Rf_error("vdiffr error: unable to read svg files");
   return 0;
 }
 
@@ -18,7 +17,7 @@ struct is_cr {
   }
 };
 
-// [[Rcpp::export]]
+[[cpp11::register]]
 bool compare_files(std::string expected, std::string test) {
   std::ifstream file1(expected.c_str(), std::ifstream::ate | std::ifstream::binary);
   std::ifstream file2(test.c_str(), std::ifstream::ate | std::ifstream::binary);

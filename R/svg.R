@@ -26,14 +26,9 @@ make_testcase_file <- function(fig_name) {
 #'
 #' @export
 write_svg <- function(plot, file, title = "") {
-  svglite(file, user_fonts = get_aliases())
+  svglite(file)
   on.exit(grDevices::dev.off())
   print_plot(plot, title)
-}
-get_aliases <- function() {
-  aliases <- fontquiver::font_families("Liberation")
-  aliases$symbol$symbol <- fontquiver::font_symbol("Symbola")
-  aliases
 }
 
 print_plot <- function(p, title = "") {
