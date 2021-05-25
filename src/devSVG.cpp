@@ -39,6 +39,7 @@ extern "C" {
 #include "utils.h"
 #include "tinyformat.h"
 
+#include "engine_version.h"
 #include "glyph_dims.h"
 
 typedef std::shared_ptr<SvgStream> SvgStreamPtr;
@@ -465,11 +466,13 @@ void svg_new_page(const pGEcontext gc, pDevDesc dd) {
   }
 
   (*stream) << " class='svglite'";
+  
+  (*stream) << " data-engine-version='" << get_engine_version() << "'";
 
   (*stream) << " width='" << dd->right << "pt' height='" << dd->bottom << "pt'";
 
   (*stream) << " viewBox='0 0 " << dd->right << ' ' << dd->bottom << "'>\n";
-
+  
   // Setting default styles
   (*stream) << "<defs>\n";
   (*stream) << "  <style type='text/css'><![CDATA[\n";

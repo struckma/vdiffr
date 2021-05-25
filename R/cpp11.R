@@ -15,3 +15,7 @@ svgstring_ <- function(env, bg, width, height, pointsize, standalone) {
 get_svg_content <- function(p) {
   .Call(`_vdiffr_get_svg_content`, p)
 }
+
+set_engine_version <- function(version) {
+  invisible(.Call(`_vdiffr_set_engine_version`, version))
+}

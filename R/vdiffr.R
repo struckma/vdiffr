@@ -10,3 +10,7 @@ SVG_ENGINE_VER <- "2.0"
 svg_engine_ver <- function() {
   as.numeric_version(SVG_ENGINE_VER)
 }
+
+.onLoad <- function(lib, pkg) {
+  set_engine_version(SVG_ENGINE_VER)
+}
