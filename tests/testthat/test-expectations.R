@@ -26,16 +26,27 @@ test_that("grid doppelgangers pass", {
   expect_doppelganger("Grid doppelganger", p_grid)
 })
 
-skip("TODO")
+test_that("stale snapshots are skipped", {
+  plot <- ggplot2::ggplot() + ggplot2::labs()
+  title <- "stale snapshots are skipped"
+  new_path <- test_path("_snaps", "expectations", "stale-snapshots-are-skipped.new.svg")
 
-test_that("skip mismatches if vdiffr is stale", {
-  withr::local_envvar(c(NOT_CRAN = "true"))
-  mock_dir <- create_mock_pkg("mock-pkg-skip-stale")
+  if (regenerate_snapshots()) {
+    expect_doppelganger(title, plot)
 
-  mock_test_dir <- file.path(mock_dir, "tests", "testthat")
-  test_results <- testthat::test_dir(mock_test_dir, reporter = "silent")
-  result <- test_results[[1]]$results[[1]]
+    # Update engine field to a stale version
+    file <- new_path
+    if (!file.exists(file)) {
+      file <- test_path("_snaps", "expectations", "stale-snapshots-are-skipped.svg")
+    }
+    lines <- readLines(file)
+    lines <- sub("data-engine-version='[0-9.]+'", "data-engine-version='0.1'", lines)
+    writeLines(lines, file)
 
-  expect_is(result, "expectation_skip")
-  expect_match(result$message, "The vdiffr engine is too old")
+    return()
+  }
+
+  cnd <- catch_cnd(expect_doppelganger(title, plot))
+  expect_s3_class(cnd, "skip")
+  file.remove(new_path)
 })

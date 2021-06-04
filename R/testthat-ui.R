@@ -80,12 +80,23 @@ expect_doppelganger <- function(title,
 
   testthat::local_edition(3)
 
-  testthat::expect_snapshot_file(
-    testcase,
-    name = paste0(fig_name, ".svg"),
-    binary = FALSE,
-    cran = FALSE
+  withCallingHandlers(
+    testthat::expect_snapshot_file(
+      testcase,
+      name = paste0(fig_name, ".svg"),
+      binary = FALSE,
+      cran = FALSE
+    ),
+    expectation_failure = function(cnd) {
+      if (is_snapshot_stale(title, testcase)) {
+        testthat::skip(paste_line(
+          "SVG snapshot generated under a different vdiffr version.",
+          "i" = "Please update your snapshots."
+        ))
+      }
+    }
   )
+
 }
 
 is_graphics_engine_stale <- function() {
@@ -98,4 +109,34 @@ str_standardise <- function(s, sep = "-") {
   s <- gsub(paste0(sep, sep, "+"), sep, s)
   s <- gsub(paste0("^", sep, "|", sep, "$"), "", s)
   s
+}
+
+is_snapshot_stale <- function(title, testcase) {
+  ctxt <- testthat::get_reporter()$.context
+  file <- paste0(str_standardise(title), ".svg")
+  path <- testthat::test_path("_snaps", ctxt, file)
+
+  if (!file.exists(path)) {
+    return(FALSE)
+  }
+
+  lines <- readLines(path)
+
+  match <- regexec(
+    "data-engine-version='([0-9.]+)'",
+    lines
+  )
+  match <- Filter(length, regmatches(lines, match))
+
+  # Old vdiffr snapshot that doesn't embed a version
+  if (!length(match)) {
+    return(TRUE)
+  }
+
+  if (length(match) > 1) {
+    abort("Found multiple vdiffr engine versions in SVG snapshot.")
+  }
+
+  snapshot_version <- match[[1]][[2]]
+  svg_engine_ver() != snapshot_version
 }
