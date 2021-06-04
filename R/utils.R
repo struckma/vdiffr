@@ -144,8 +144,7 @@ diff_lines <- function(case,
 vdiffr_info <- function() {
   glue(
     "- vdiffr-svg-engine: { SVG_ENGINE_VER }
-     - vdiffr: { utils::packageVersion('vdiffr') }
-     - freetypeharfbuzz: { utils::packageVersion('freetypeharfbuzz') }"
+     - vdiffr: { utils::packageVersion('vdiffr') }"
   )
 }
 
