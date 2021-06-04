@@ -129,9 +129,7 @@ diff_lines <- function(case,
     # For reproducibility
     disp.width = 80
   )
-
-  # No format() method?
-  lines <- utils::capture.output(print(diff))
+  lines <- as.character(diff)
 
   paste_line(
     glue("Failed doppelganger: {case$name} ({case$path})"),
