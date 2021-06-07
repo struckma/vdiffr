@@ -1,5 +1,4 @@
-
-context("Orphaned")
+vdiffr_skip_stale()
 
 test_that("Orphaned figures are found", {
   orphaned <- filter_cases(mock_cases, "orphaned_case")

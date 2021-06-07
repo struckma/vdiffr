@@ -1,5 +1,4 @@
-
-context("Thrown error")
+vdiffr_skip_stale()
 
 collect_silently <- function(pkg) {
   capture.output(suppressMessages(collect_cases(pkg)))

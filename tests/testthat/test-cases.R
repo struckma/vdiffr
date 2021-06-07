@@ -1,5 +1,4 @@
-
-context("Cases")
+vdiffr_skip_stale()
 
 test_that("Attributes are preserved", {
   cases <- vdiffr:::cases(list(), "pkg_path", "deps")

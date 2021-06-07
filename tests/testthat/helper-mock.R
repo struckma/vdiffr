@@ -1,3 +1,6 @@
+vdiffr_skip_stale <- function() {
+  skip_if_not_installed("base", "4.1.0")
+}
 
 create_mock_pkg <- function(pkg = "mock-pkg") {
   dir <- tempfile()

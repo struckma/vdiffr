@@ -136,7 +136,7 @@ expect_doppelganger <- function(title,
   testcase <- make_testcase_file(fig_name)
   writer(fig, testcase, title)
 
-  if (getRversion() < "4.1.0") {
+  if (is_engine_stale()) {
     testthat::skip(paste_line(
       "The R graphics engine is too old.",
       "Please update to R 4.1.0 and regenerate the vdiffr snapshots."
@@ -171,6 +171,10 @@ expect_doppelganger <- function(title,
 # FIXME: Use TESTTHAT_PKG envvar after devtools and testthat release
 is_collecting <- function() {
   !inherits(testthat::get_reporter(), "StopReporter")
+}
+
+is_engine_stale <- function() {
+  nzchar(Sys.getenv("_VDIFFR_CHECK_STALE")) && getRversion() < "4.1.0"
 }
 
 str_standardise <- function(s, sep = "-") {

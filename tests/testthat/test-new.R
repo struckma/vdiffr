@@ -1,5 +1,4 @@
-
-context("New cases")
+vdiffr_skip_stale()
 
 test_that("New cases are skipped", {
   new_results <- subset_results(test_results, "test-new.R", "New plots are collected")

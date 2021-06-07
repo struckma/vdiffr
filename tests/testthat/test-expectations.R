@@ -1,5 +1,4 @@
-
-context("Expectations")
+vdiffr_skip_stale()
 
 test_that("Mismatches are skipped except on CI and interactively", {
   notcran_result <- subset_results(test_results, "test-failed.R", "mismatches are hard failures when NOT_CRAN is set")[[1]]

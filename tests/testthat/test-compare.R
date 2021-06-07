@@ -1,5 +1,4 @@
-
-context("File comparison")
+vdiffr_skip_stale()
 
 write_tempfile <- function(lines) {
   path <- tempfile()
