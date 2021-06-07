@@ -23,6 +23,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Thomas Lin Pedersen \email{thomas.pedersen@rstudio.com} (\href{https://orcid.org/0000-0002-5147-4711}{ORCID})
   \item Carl Sutherland (jg-imagediff library)
   \item David Hong (TwoFace library)
   \item T Jake Luciani \email{jake@apache.org} (svglite)

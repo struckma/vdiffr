@@ -3,6 +3,8 @@ Title: Visual Regression Testing and Graphical Diffing
 Version: 0.4.0.9000
 Authors@R: c(
     person("Lionel", "Henry", , "lionel@rstudio.com", c("cre", "aut")),
+    person("Thomas Lin", "Pedersen", , "thomas.pedersen@rstudio.com", 
+           role = "aut", comment = c(ORCID = "0000-0002-5147-4711")),
     person("RStudio", role = "cph"),
     person("Carl", "Sutherland", role = "aut", comment = "jg-imagediff library"),
     person("Humble Software", role = "cph", comment = "jg-imagediff library"),
