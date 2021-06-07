@@ -1,5 +1,18 @@
+# vdiffr 0.4.0
 
-# vdiffr (development version)
+This is a github-only release that is meant to help you migrate from
+vdiffr 0.3.x to vdiffr 1.0.0. The 1.0 release of vdiffr includes two
+major changes. It switches to testthat 3e for snapshot management and
+it uses an updated SVG engine for the generation of snapshots. The
+github-only 0.4.0 release only includes the new SVG engine to make it
+easy to compare cases with `manage_cases()`.
+
+This intermediate step in the migration of snapshots is optional. You
+can also choose to update directly with the 1.0.0 release but you
+won't be able to compare the new snapshots to your old ones.
+
+Note that smaller points are expected in the new snapshots because of
+a bugfix.
 
 - Following an update to the graphics engine of R 4.1.0 that causes
   spurious failures due to subtle changes in graphics generation,
