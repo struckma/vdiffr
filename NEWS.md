@@ -1,6 +1,14 @@
 
 # vdiffr (development version)
 
+- The SVG generation engine of vdiffr has been updated (@thomasp85).
+  Font sizes are now precomputed for the first 50000 unicode points.
+  This allows deterministic computation of text box extents without
+  the freetype and harfbuzz dependencies.
+  
+  Note: The main visible change of this update is that points now look
+  smaller. Points generated with the previous SVG engine were too large.
+
 - vdiffr is now licensed as MIT (#95).
 
 
