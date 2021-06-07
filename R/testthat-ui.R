@@ -136,6 +136,13 @@ expect_doppelganger <- function(title,
   testcase <- make_testcase_file(fig_name)
   writer(fig, testcase, title)
 
+  if (getRversion() < "4.1.0") {
+    testthat::skip(paste_line(
+      "The R graphics engine is too old.",
+      "Please update to R 4.1.0 and regenerate the vdiffr snapshots."
+    ))
+  }
+
   context <- get(".context", envir = testthat::get_reporter())
   context <- str_standardise(context %||% "")
   path <- path %||% context
@@ -224,7 +231,10 @@ match_exp <- function(msg, case) {
 }
 mismatch_exp <- function(msg, case) {
   if (is_vdiffr_stale()) {
-    msg <- "The vdiffr engine is too old. Please update vdiffr and revalidate the figures."
+    msg <- paste_line(
+      "The vdiffr engine is too old.",
+       "Please update vdiffr and regenerate the snapshots."
+    )
     new_expectation(msg, case, "skip", "vdiffr_mismatch")
   } else if (is_ci()) {
     new_expectation(msg, case, "failure", "vdiffr_mismatch")

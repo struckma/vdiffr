@@ -1,6 +1,12 @@
 
 # vdiffr (development version)
 
+- Following an update to the graphics engine of R 4.1.0 that causes
+  spurious failures due to subtle changes in graphics generation,
+  vdiffr snapshots are now skipped on old versions of R. The plots are
+  still generated on all versions so any errors during plot drawing
+  will be detected by testthat.
+
 - The SVG generation engine of vdiffr has been updated (@thomasp85).
   Font sizes are now precomputed for the first 50000 unicode points.
   This allows deterministic computation of text box extents without
