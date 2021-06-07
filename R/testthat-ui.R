@@ -25,6 +25,29 @@
 #'   and an optional plot title. It should transform the plot to SVG
 #'   in a deterministic way and write it to the target file. See
 #'   [write_svg()] (the default) for an example.
+#' @param cran If `FALSE` (the default), mismatched snapshots only
+#'   cause a failure when you run tests locally or in your CI (Github
+#'   Actions or any platform that sets the `CI` environment variable).
+#'   If `TRUE`, failures may also occur on CRAN machines.
+#'
+#'   Failures are disabled on CRAN by default because testing the
+#'   appearance of a figure is inherently fragile. Changes in the R
+#'   graphics engine or in ggplot2 may cause subtle differences in the
+#'   aspect of a plot, such as a slightly smaller or larger margin.
+#'   These changes will cause spurious failures because you need to
+#'   update your snapshots to reflect the upstream changes.
+#'
+#'   It would be distracting for both you and the CRAN maintainers if
+#'   such changes systematically caused failures on CRAN. This is why
+#'   snapshot expectations do not fail on CRAN by default and should
+#'   be treated as a monitoring tool that allows you to quickly check
+#'   how the appearance of your figures changes over time, and to
+#'   manually assess whether changes reflect actual problems in your
+#'   package.
+#'
+#'   Internally, this argument is passed to
+#'   [testthat::expect_snapshot_file()].
+#'
 #'
 #' @section Debugging:
 #' It is sometimes difficult to understand the cause of a failure.
@@ -66,7 +89,8 @@ expect_doppelganger <- function(title,
                                 fig,
                                 path = deprecated(),
                                 ...,
-                                writer = write_svg) {
+                                writer = write_svg,
+                                cran = FALSE) {
   fig_name <- str_standardise(title)
   testcase <- make_testcase_file(fig_name)
   writer(fig, testcase, title)
@@ -87,7 +111,7 @@ expect_doppelganger <- function(title,
       testcase,
       name = file,
       binary = FALSE,
-      cran = FALSE
+      cran = cran
     ),
     expectation_failure = function(cnd) {
       if (is_snapshot_stale(title, testcase)) {

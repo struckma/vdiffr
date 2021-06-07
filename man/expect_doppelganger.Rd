@@ -4,7 +4,14 @@
 \alias{expect_doppelganger}
 \title{Does a figure look like its expected output?}
 \usage{
-expect_doppelganger(title, fig, path = deprecated(), ..., writer = write_svg)
+expect_doppelganger(
+  title,
+  fig,
+  path = deprecated(),
+  ...,
+  writer = write_svg,
+  cran = FALSE
+)
 }
 \arguments{
 \item{title}{A brief description of what is being tested in the
@@ -29,6 +36,29 @@ plot, e.g. \code{fig = function() plot(1:3)}.}
 and an optional plot title. It should transform the plot to SVG
 in a deterministic way and write it to the target file. See
 \code{\link[=write_svg]{write_svg()}} (the default) for an example.}
+
+\item{cran}{If \code{FALSE} (the default), mismatched snapshots only
+cause a failure when you run tests locally or in your CI (Github
+Actions or any platform that sets the \code{CI} environment variable).
+If \code{TRUE}, failures may also occur on CRAN machines.
+
+Failures are disabled on CRAN by default because testing the
+appearance of a figure is inherently fragile. Changes in the R
+graphics engine or in ggplot2 may cause subtle differences in the
+aspect of a plot, such as a slightly smaller or larger margin.
+These changes will cause spurious failures because you need to
+update your snapshots to reflect the upstream changes.
+
+It would be distracting for both you and the CRAN maintainers if
+such changes systematically caused failures on CRAN. This is why
+snapshot expectations do not fail on CRAN by default and should
+be treated as a monitoring tool that allows you to quickly check
+how the appearance of your figures changes over time, and to
+manually assess whether changes reflect actual problems in your
+package.
+
+Internally, this argument is passed to
+\code{\link[testthat:expect_snapshot_file]{testthat::expect_snapshot_file()}}.}
 }
 \description{
 \code{expect_doppelganger()} is a testthat expectation for graphical
