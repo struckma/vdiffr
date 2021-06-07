@@ -129,9 +129,7 @@ diff_lines <- function(case,
     # For reproducibility
     disp.width = 80
   )
-
-  # No format() method?
-  lines <- utils::capture.output(print(diff))
+  lines <- as.character(diff)
 
   paste_line(
     glue("Failed doppelganger: {case$name} ({case$path})"),
@@ -144,8 +142,7 @@ diff_lines <- function(case,
 vdiffr_info <- function() {
   glue(
     "- vdiffr-svg-engine: { SVG_ENGINE_VER }
-     - vdiffr: { utils::packageVersion('vdiffr') }
-     - freetypeharfbuzz: { utils::packageVersion('freetypeharfbuzz') }"
+     - vdiffr: { utils::packageVersion('vdiffr') }"
   )
 }
 
@@ -205,6 +202,3 @@ next_element <- function(element, group, direction = 1) {
 
   group[next_position]
 }
-
-# Silence R CMD check NOTE
-freetypeharfbuzz::font_info

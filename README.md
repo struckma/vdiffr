@@ -2,8 +2,7 @@
 # vdiffr
 
 <!-- badges: start -->
-[![Travis Build Status](https://travis-ci.org/r-lib/vdiffr.svg?branch=master)](https://travis-ci.org/r-lib/vdiffr)
-[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/github/r-lib/vdiffr?branch=master&svg=true)](https://ci.appveyor.com/project/r-lib/vdiffr)
+[![R-CMD-check](https://github.com/r-lib/vdiffr/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/vdiffr/actions)
 [![Codecov test coverage](https://codecov.io/gh/r-lib/vdiffr/branch/master/graph/badge.svg)](https://codecov.io/gh/r-lib/vdiffr?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/vdiffr)](https://cran.r-project.org/package=vdiffr)
 <!-- badges: end -->

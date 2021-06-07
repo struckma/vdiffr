@@ -13,6 +13,7 @@ HTMLWidgets.widget({
     if (!img) {
       img = document.createElement('img');
       img.id = 'vdiffr-toggle-img';
+      img.style.width = "100%";
     }
 
     img.src = x.files['before'];

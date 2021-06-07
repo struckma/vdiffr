@@ -1,5 +1,4 @@
-#ifndef ALGO_IT_H
-#define ALGO_IT_H
+#pragma once
 
 template <class InputIterator, class Predicate>
 InputIterator find_if_it(InputIterator it, InputIterator end,
@@ -28,5 +27,3 @@ ForwardIterator remove_if_it(ForwardIterator it, ForwardIterator end,
   ForwardIterator next = it;
   return it == end ? it : remove_copy_if_it(++next, end, it, pred);
 }
-
-#endif

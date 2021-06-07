@@ -1,6 +1,3 @@
-#' @importFrom gdtools raster_view
-NULL
-
 svglite_path <- function(...) {
   file.path("R", "svglite", ...)
 }
