@@ -80,10 +80,12 @@ expect_doppelganger <- function(title,
 
   testthat::local_edition(3)
 
+  file <- paste0(fig_name, ".svg")
+
   withCallingHandlers(
     testthat::expect_snapshot_file(
       testcase,
-      name = paste0(fig_name, ".svg"),
+      name = file,
       binary = FALSE,
       cran = FALSE
     ),
@@ -94,9 +96,34 @@ expect_doppelganger <- function(title,
           "i" = "Please update your snapshots."
         ))
       }
+
+      if (!is.null(snapshotter <- get_snapshotter())) {
+        path_old <- snapshot_path(snapshotter, file)
+        path_new <- snapshot_path(snapshotter, paste0(fig_name, ".new.svg"))
+
+        if (all(file.exists(path_old, path_new))) {
+          push_log(fig_name, path_old, path_new)
+        }
+      }
     }
   )
+}
 
+# From testthat
+get_snapshotter <- function() {
+  x <- getOption("testthat.snapshotter")
+  if (is.null(x)) {
+    return()
+  }
+
+  if (!x$is_active()) {
+    return()
+  }
+
+  x
+}
+snapshot_path <- function(snapshotter, file) {
+  file.path(snapshotter$snap_dir, snapshotter$file, file)
 }
 
 is_graphics_engine_stale <- function() {
@@ -112,10 +139,13 @@ str_standardise <- function(s, sep = "-") {
 }
 
 is_snapshot_stale <- function(title, testcase) {
-  ctxt <- testthat::get_reporter()$.context
-  file <- paste0(str_standardise(title), ".svg")
-  path <- testthat::test_path("_snaps", ctxt, file)
+  if (is_null(snapshotter <- get_snapshotter())) {
+    return(FALSE)
+  }
 
+  file <- paste0(str_standardise(title), ".svg")
+  path <- snapshot_path(snapshotter, file)
+  
   if (!file.exists(path)) {
     return(FALSE)
   }
