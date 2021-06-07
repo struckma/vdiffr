@@ -30,7 +30,7 @@ If you need to test a plot with non-printable objects (e.g. base
 plots), \code{fig} can be a function that generates and prints the
 plot, e.g. \code{fig = function() plot(1:3)}.}
 
-\item{path, ...}{TODO: Deprecated}
+\item{path, ...}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}.}
 
 \item{writer}{A function that takes the plot, a target SVG file,
 and an optional plot title. It should transform the plot to SVG

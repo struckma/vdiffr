@@ -20,7 +20,7 @@
 #'   If you need to test a plot with non-printable objects (e.g. base
 #'   plots), `fig` can be a function that generates and prints the
 #'   plot, e.g. `fig = function() plot(1:3)`.
-#' @param path,... TODO: Deprecated
+#' @param path,... `r lifecycle::badge('deprecated')`.
 #' @param writer A function that takes the plot, a target SVG file,
 #'   and an optional plot title. It should transform the plot to SVG
 #'   in a deterministic way and write it to the target file. See
@@ -94,6 +94,19 @@ expect_doppelganger <- function(title,
   fig_name <- str_standardise(title)
   testcase <- make_testcase_file(fig_name)
   writer(fig, testcase, title)
+
+  if (!missing(...)) {
+    lifecycle::deprecate_soft(
+      "1.0.0",
+      "vdiffr::expect_doppelganger(... = )",
+    )
+  }
+  if (lifecycle::is_present(path)) {
+    lifecycle::deprecate_soft(
+      "1.0.0",
+      "vdiffr::expect_doppelganger(cran = )",
+    )
+  }
 
   if (is_graphics_engine_stale()) {
     testthat::skip(paste_line(

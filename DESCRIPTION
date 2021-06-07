@@ -29,6 +29,7 @@ Imports:
     glue,
     grDevices,
     htmltools,
+    lifecycle,
     purrr (>= 0.2.0),
     rlang,
     R6,
