@@ -72,11 +72,20 @@ test_that("no 'svglite supports one page' error (#85)", {
       widths = unit(c(0.05, 0.9, 0.05), "npc"),
       heights = unit(c(0.05, 0.9, 0.05), "npc")
     )
-    gt <- gtable_add_grob(gt, list(axes_grob), 2, 2, clip = "off")
-    plot(gt)
+    gtable_add_grob(gt, list(axes_grob), 2, 2, clip = "off")
   }
   environment(test_draw_axis) <- env(ns_env("ggplot2"))
 
   expect_doppelganger("page-error1", test_draw_axis(FALSE))
   expect_doppelganger("page-error2", test_draw_axis(TRUE))
+})
+
+test_that("supports `grob` objects (#36)", {
+  circle <- grid::circleGrob(
+    x = 0.5,
+    y = 0.5,
+    r = 0.5,
+    gp = grid::gpar(col = "gray", lty = 3)
+  )
+  expect_doppelganger("grob", circle)
 })

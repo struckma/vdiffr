@@ -3,6 +3,7 @@
 S3method(print_plot,"function")
 S3method(print_plot,default)
 S3method(print_plot,ggplot)
+S3method(print_plot,grob)
 S3method(print_plot,recordedplot)
 export(expect_doppelganger)
 export(write_svg)
