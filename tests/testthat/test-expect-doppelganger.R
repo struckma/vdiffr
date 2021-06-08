@@ -29,7 +29,7 @@ test_that("grid doppelgangers pass", {
 test_that("stale snapshots are skipped", {
   plot <- ggplot2::ggplot() + ggplot2::labs()
   title <- "stale snapshots are skipped"
-  new_path <- test_path("_snaps", "expectations", "stale-snapshots-are-skipped.new.svg")
+  new_path <- test_path("_snaps", "expect-doppelganger", "stale-snapshots-are-skipped.new.svg")
 
   if (regenerate_snapshots()) {
     expect_doppelganger(title, plot)
@@ -37,7 +37,7 @@ test_that("stale snapshots are skipped", {
     # Update engine field to a stale version
     file <- new_path
     if (!file.exists(file)) {
-      file <- test_path("_snaps", "expectations", "stale-snapshots-are-skipped.svg")
+      file <- test_path("_snaps", "expect-doppelganger", "stale-snapshots-are-skipped.svg")
     }
     lines <- readLines(file)
     lines <- sub("data-engine-version='[0-9.]+'", "data-engine-version='0.1'", lines)
