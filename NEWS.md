@@ -25,6 +25,12 @@ There are two steps to update your snapshots to vdiffr 1.0.
    run `devtools::test()`, and then `testthat::snapshot_review()`.
 
 
+## Other changes
+
+* `expect_doppelganger()` now supports grid objects such as `gtable`
+  and `grob` (#36).
+
+
 # vdiffr 0.4.0
 
 This is a github-only release that is meant to help you migrate from
