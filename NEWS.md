@@ -1,4 +1,4 @@
-# vdiffr (development version)
+# vdiffr 1.0.0
 
 This release includes two major changes:
 
