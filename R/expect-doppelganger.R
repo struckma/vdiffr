@@ -104,7 +104,7 @@ expect_doppelganger <- function(title,
   if (lifecycle::is_present(path)) {
     lifecycle::deprecate_soft(
       "1.0.0",
-      "vdiffr::expect_doppelganger(cran = )",
+      "vdiffr::expect_doppelganger(path = )",
     )
   }
 

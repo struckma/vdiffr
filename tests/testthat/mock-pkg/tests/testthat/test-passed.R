@@ -2,19 +2,19 @@ library("vdiffr")
 
 test_that("ggplot doppelgangers pass", {
   p1_orig <- ggplot2::ggplot(mtcars, ggplot2::aes(disp)) + ggplot2::geom_histogram()
-  expect_doppelganger("myplot", p1_orig, "")
+  expect_doppelganger("myplot", p1_orig)
 })
 
 test_that("base doppelgangers pass", {
   p_base <- function() plot(mtcars$disp)
-  expect_doppelganger("myplot2", p_base, "")
+  expect_doppelganger("myplot2", p_base)
 
   p_base_symbol <- function() {
     plot.new()
     text(0.5, 0.8, expression(x[i] + over(x, y)), font = 5)
   }
 
-  expect_doppelganger("Base doppelganger with symbol", p_base_symbol, "")
+  expect_doppelganger("Base doppelganger with symbol", p_base_symbol)
 })
 
 library("grid")
