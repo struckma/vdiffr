@@ -1,13 +1,11 @@
-
-Removed offending URL.
-
-## Test environments
-
-* local OS X install, R release
-* ubuntu 12.04 (on travis-ci), R oldrel, release, and devel
-* win-builder (R devel and release)
-
-
 ## R CMD check results
 
 0 errors | 0 warnings | 0 notes
+
+
+## revdepcheck
+
+We checked 117 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+
+ * We saw 0 new problems
+ * We failed to check 0 packages
