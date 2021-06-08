@@ -1,4 +1,5 @@
 vdiffr_skip_stale()
+skip_if_not_installed("ggplot2")
 
 test_that("ggtitle is set correctly", {
   p <- ggplot2::ggplot()

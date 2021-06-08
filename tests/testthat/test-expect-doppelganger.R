@@ -1,6 +1,7 @@
 vdiffr_skip_stale()
 
 test_that("ggplot doppelgangers pass", {
+  skip_if_not_installed("ggplot2")
   p1_orig <- ggplot2::ggplot(mtcars, ggplot2::aes(disp)) + ggplot2::geom_histogram()
   expect_doppelganger("myplot", p1_orig, "")
 })
