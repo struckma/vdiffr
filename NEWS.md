@@ -2,15 +2,18 @@
 
 This release includes two major changes:
 
-1. The internal SVG engine has been updated. This means you will have
-   to regenerate all existing snapshots.
+1. The internal SVG engine has been updated. It is now lighter, more
+   robust, with fewer dependencies. It also generates more correct
+   SVG. The main user visible change is that points look smaller than
+   with older snapshots. Because of this update you will have to
+   regenerate all existing snapshots with the new engine.
 
 2. The snapshot management system now uses testthat (see
    https://testthat.r-lib.org/articles/snapshotting.html). Most of the
    R and javascript code has been removed from vdiffr as a consequence.
    vdiffr now serves as a reproducible SVG generation engine for
    testthat snapshots.
-   
+
 
 ## Migration of existing snapshots
 
