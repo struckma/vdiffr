@@ -27,10 +27,12 @@ print_plot <- function(p, title = "") {
   UseMethod("print_plot")
 }
 
+#' @export
 print_plot.default <- function(p, title = "") {
   print(p)
 }
 
+#' @export
 print_plot.ggplot <- function(p, title = "") {
   if (title != "" && !"title" %in% names(p$labels)) {
     p <- p + ggplot2::ggtitle(title)
@@ -41,10 +43,12 @@ print_plot.ggplot <- function(p, title = "") {
   print(p)
 }
 
+#' @export
 print_plot.recordedplot <- function(p, title) {
   grDevices::replayPlot(p)
 }
 
+#' @export
 print_plot.function <- function(p, title) {
   p()
 }
