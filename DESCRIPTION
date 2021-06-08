@@ -24,26 +24,19 @@ ByteCompile: true
 Depends:
     R (>= 3.2.0)
 Imports:
-    devtools,
     diffobj,
     glue,
     grDevices,
     htmltools,
     lifecycle,
-    purrr (>= 0.2.0),
     rlang,
-    R6,
-    testthat (>= 1.0.0),
-    usethis (>= 1.4.0),
+    testthat (>= 3.0.0),
     xml2 (>= 1.0.0)
 Suggests:
     covr,
-    crayon,
     ggplot2 (>= 3.2.0),
     roxygen2,
-    rstudioapi,
-    withr,
-    yaml
+    withr
 LinkingTo:
     cpp11
 RoxygenNote: 7.1.1.9001

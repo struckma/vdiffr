@@ -1,7 +1,5 @@
 #' @import rlang
 #' @importFrom glue glue
-#' @importFrom purrr map map_chr keep walk every partial map2_chr compact
-#' @importFrom R6 R6Class
 #' @useDynLib vdiffr, .registration = TRUE
 #' @keywords internal
 "_PACKAGE"
