@@ -51,3 +51,32 @@ test_that("stale snapshots are skipped", {
   expect_s3_class(cnd, "skip")
   file.remove(new_path)
 })
+
+test_that("no 'svglite supports one page' error (#85)", {
+  test_draw_axis <- function(add_labels = FALSE) {
+    theme <- theme_test() + theme(axis.line = element_line(size = 0.5))
+    positions <- c("top", "right", "bottom", "left")
+
+    n_breaks <- 3
+    break_positions <- seq_len(n_breaks) / (n_breaks + 1)
+    labels <- if (add_labels) as.character(seq_along(break_positions))
+
+    # create the axes
+    axes <- lapply(positions, function(position) {
+      ggplot2:::draw_axis(break_positions, labels, axis_position = position, theme = theme)
+    })
+    axes_grob <- gTree(children = do.call(gList, axes))
+
+    # arrange them so there's some padding on each side
+    gt <- gtable(
+      widths = unit(c(0.05, 0.9, 0.05), "npc"),
+      heights = unit(c(0.05, 0.9, 0.05), "npc")
+    )
+    gt <- gtable_add_grob(gt, list(axes_grob), 2, 2, clip = "off")
+    plot(gt)
+  }
+  environment(test_draw_axis) <- env(ns_env("ggplot2"))
+
+  expect_doppelganger("page-error1", test_draw_axis(FALSE))
+  expect_doppelganger("page-error2", test_draw_axis(TRUE))
+})
