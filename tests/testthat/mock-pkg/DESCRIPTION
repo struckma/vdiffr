@@ -8,3 +8,4 @@ Version: 0.1
 Suggests:
     testthat,
     vdiffr
+Config/testthat/edition: 3
