@@ -47,7 +47,7 @@ test_that("stale snapshots are skipped", {
     return()
   }
 
-  cnd <- catch_cnd(expect_doppelganger(title, plot))
+  cnd <- catch_cnd(expect_doppelganger(title, plot), "skip")
   expect_s3_class(cnd, "skip")
   file.remove(new_path)
 })

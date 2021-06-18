@@ -1,6 +1,6 @@
 Package: vdiffr
 Title: Visual Regression Testing and Graphical Diffing
-Version: 1.0.1
+Version: 1.0.2
 Authors@R: c(
     person("Lionel", "Henry", , "lionel@rstudio.com", c("cre", "aut")),
     person("Thomas Lin", "Pedersen", , "thomas.pedersen@rstudio.com", 

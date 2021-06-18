@@ -128,8 +128,8 @@ expect_doppelganger <- function(title,
     testthat::expect_snapshot_file(
       testcase,
       name = file,
-      binary = FALSE,
-      cran = cran
+      cran = cran,
+      compare = testthat::compare_file_text
     ),
     expectation_failure = function(cnd) {
       if (is_snapshot_stale(title, testcase)) {
