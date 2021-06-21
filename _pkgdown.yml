@@ -10,6 +10,8 @@ navbar:
       text: News
       menu:
       - text: "Release notes"
+      - text: "Version 1.0.0"
+        href: https://www.tidyverse.org/blog/2021/06/vdiffr-1-0-0/
       - text: "Version 0.3.0"
         href: https://www.tidyverse.org/articles/2019/01/vdiffr-0-3-0/
       - text: "------------------"
