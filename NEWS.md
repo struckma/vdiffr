@@ -1,5 +1,8 @@
 # vdiffr (development version)
 
+* Compatibility with UCRT build of Windows (@jeroen).
+
+
 # vdiffr 1.0.2
 
 * testthat no longer auto-deletes snapshot files that were not
