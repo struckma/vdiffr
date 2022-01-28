@@ -3,6 +3,7 @@
 
 #include "vdiffr_types.h"
 #include "cpp11/declarations.hpp"
+#include <R_ext/Visibility.h>
 
 // compare.cpp
 bool compare_files(std::string expected, std::string test);
@@ -42,13 +43,6 @@ extern "C" SEXP _vdiffr_set_engine_version(SEXP version) {
 }
 
 extern "C" {
-/* .Call calls */
-extern SEXP _vdiffr_compare_files(SEXP, SEXP);
-extern SEXP _vdiffr_get_svg_content(SEXP);
-extern SEXP _vdiffr_set_engine_version(SEXP);
-extern SEXP _vdiffr_svglite_(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _vdiffr_svgstring_(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-
 static const R_CallMethodDef CallEntries[] = {
     {"_vdiffr_compare_files",      (DL_FUNC) &_vdiffr_compare_files,      2},
     {"_vdiffr_get_svg_content",    (DL_FUNC) &_vdiffr_get_svg_content,    1},
@@ -59,7 +53,7 @@ static const R_CallMethodDef CallEntries[] = {
 };
 }
 
-extern "C" void R_init_vdiffr(DllInfo* dll){
+extern "C" attribute_visible void R_init_vdiffr(DllInfo* dll){
   R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
   R_useDynamicSymbols(dll, FALSE);
   R_forceSymbols(dll, TRUE);
