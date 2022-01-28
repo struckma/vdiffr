@@ -2,7 +2,7 @@
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/r-lib/vdiffr/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/vdiffr/actions)
-[![Codecov test coverage](https://codecov.io/gh/r-lib/vdiffr/branch/main/graph/badge.svg)](https://codecov.io/gh/r-lib/vdiffr?branch=main)
+[![Codecov test coverage](https://codecov.io/gh/r-lib/vdiffr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/vdiffr?branch=main)
 [![CRAN status](https://www.r-pkg.org/badges/version/vdiffr)](https://cran.r-project.org/package=vdiffr)
 <!-- badges: end -->
 
