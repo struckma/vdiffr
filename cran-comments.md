@@ -1,11 +1,13 @@
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+0 errors | 1 warning | 0 notes
+
+winbuilder emits:
+
+Found the following significant warnings:
+  WARNING: failed to apply patch d:/RCompile/CRANpkg/r_packages/patches/CRAN/vdiffr.diff
+
+This is probably Tomas' UCRT patch failing to apply.
 
 
 ## revdepcheck
-
-We checked 117 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
-
- * We saw 0 new problems
- * We failed to check 0 packages
