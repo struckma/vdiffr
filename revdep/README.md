@@ -1,8 +1,10 @@
 # Revdeps
 
-## New problems (1)
+## Failed to check (3)
 
-|package                          |version |error  |warning |note |
-|:--------------------------------|:-------|:------|:-------|:----|
-|[thematic](problems.md#thematic) |0.1.2   |__+1__ |        |     |
+|package |version |error |warning |note |
+|:-------|:-------|:-----|:-------|:----|
+|NA      |?       |      |        |     |
+|NA      |?       |      |        |     |
+|NA      |?       |      |        |     |
 
