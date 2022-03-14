@@ -1,4 +1,7 @@
-# vdiffr (development version)
+# vdiffr 1.0.4
+
+* Compatibility with UCRT build of Windows using Rtools42.
+
 
 # vdiffr 1.0.3
 
