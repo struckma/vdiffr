@@ -1,19 +1,16 @@
 url: https://vdiffr.r-lib.org
-destination: docs
 
-navbar:
-  structure:
-    left:  [home, reference, news]
-    right: [github]
-  components:
-    news:
-      text: News
-      menu:
-      - text: "Release notes"
-      - text: "Version 1.0.0"
-        href: https://www.tidyverse.org/blog/2021/06/vdiffr-1-0-0/
-      - text: "Version 0.3.0"
-        href: https://www.tidyverse.org/articles/2019/01/vdiffr-0-3-0/
-      - text: "------------------"
-      - text: "Change log"
-        href: news/index.html
+template:
+  package: tidytemplate
+  bootstrap: 5
+
+  includes:
+    in_header: |
+      <script defer data-domain="vdiffr.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>  
+
+news:
+  releases:
+  - text: "Version 1.0.0"
+    href: https://www.tidyverse.org/blog/2021/06/vdiffr-1-0-0/
+  - text: "Version 0.3.0"
+    href: https://www.tidyverse.org/articles/2019/01/vdiffr-0-3-0/
