@@ -30,7 +30,7 @@ Authors:
 
 Other contributors:
 \itemize{
-  \item RStudio [copyright holder]
+  \item RStudio [copyright holder, funder]
   \item Tony Plate (svglite: Early line dashing code) [contributor]
   \item David Gohel (svglite: Line dashing code and raster code) [contributor]
   \item Yixuan Qiu (svglite: Improved styles; polypath implementation) [contributor]
