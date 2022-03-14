@@ -1,3 +1,5 @@
+# vdiffr (development version)
+
 # vdiffr 1.0.3
 
 * Compatibility with UCRT build of Windows (@jeroen).
