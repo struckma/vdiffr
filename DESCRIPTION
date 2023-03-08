@@ -2,10 +2,10 @@ Package: vdiffr
 Title: Visual Regression Testing and Graphical Diffing
 Version: 1.0.5.9000
 Authors@R: c(
-    person("Lionel", "Henry", , "lionel@rstudio.com", c("cre", "aut")),
-    person("Thomas Lin", "Pedersen", , "thomas.pedersen@rstudio.com", 
+    person("Lionel", "Henry", , "lionel@posit.co", c("cre", "aut")),
+    person("Thomas Lin", "Pedersen", , "thomas.pedersen@posit.co", 
            role = "aut", comment = c(ORCID = "0000-0002-5147-4711")),
-    person("RStudio", role = c("cph", "fnd")),
+    person("Posit Software, PBC", role = c("cph", "fnd")),
     person("T Jake", "Luciani", , "jake@apache.org", "aut", comment = "svglite"),
     person("Matthieu", "Decorde", , "matthieu.decorde@ens-lyon.fr", "aut", comment = "svglite"),
     person("Vaudor", "Lise", , "lise.vaudor@ens-lyon.fr", "aut", comment = "svglite"),
