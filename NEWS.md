@@ -1,3 +1,5 @@
+# vdiffr (development version)
+
 # vdiffr 1.0.5
 
 * Fix for CRAN checks.
