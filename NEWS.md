@@ -1,5 +1,9 @@
 # vdiffr (development version)
 
+* The SVG device in vdiffr now has a different name
+  so it can be distinguished from the svglite device (#135).
+
+
 # vdiffr 1.0.5
 
 * Fix for CRAN checks.
