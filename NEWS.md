@@ -1,3 +1,5 @@
+# vdiffr (development version)
+
 # vdiffr 1.0.6
 
 * The SVG device in vdiffr now has a different name
