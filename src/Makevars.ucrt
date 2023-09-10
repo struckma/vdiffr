@@ -1,2 +1,4 @@
+CXX_STD = CXX14
+
 CRT = -ucrt
 include Makevars.win
