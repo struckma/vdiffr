@@ -1,3 +1,5 @@
+# vdiffr (development version)
+
 # vdiffr 1.0.7
 
 * Revert back to C++11 to work around a GCC issue (#137).
