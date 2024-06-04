@@ -3,19 +3,22 @@ vdiffr_skip_stale()
 test_that("ggplot doppelgangers pass", {
   skip_if_not_installed("ggplot2")
   p1_orig <- ggplot2::ggplot(mtcars, ggplot2::aes(disp)) + ggplot2::geom_histogram()
-  expect_doppelganger("myplot", p1_orig, "")
+  expect_doppelganger("myplot", p1_orig, variant = 
+                        paste0("R", getRversion()[, 1:2]))
 })
 
 test_that("base doppelgangers pass", {
   p_base <- function() plot(mtcars$disp)
-  expect_doppelganger("myplot2", p_base, "")
+  expect_doppelganger("myplot2", p_base, variant = 
+                        paste0("R", getRversion()[, 1:2]))
 
   p_base_symbol <- function() {
     plot.new()
     text(0.5, 0.8, expression(x[i] + over(x, y)), font = 5)
   }
 
-  expect_doppelganger("Base doppelganger with symbol", p_base_symbol, "")
+  expect_doppelganger("Base doppelganger with symbol", p_base_symbol, 
+                      variant = paste0("R", getRversion()[, 1:2]))
 })
 
 test_that("grid doppelgangers pass", {
@@ -76,8 +79,10 @@ test_that("no 'svglite supports one page' error (#85)", {
   }
   environment(test_draw_axis) <- env(ns_env("ggplot2"))
 
-  expect_doppelganger("page-error1", test_draw_axis(FALSE))
-  expect_doppelganger("page-error2", test_draw_axis(TRUE))
+  expect_doppelganger("page-error1", test_draw_axis(FALSE), 
+                      variant = paste0("R", getRversion()[, 1:2]))
+  expect_doppelganger("page-error2", test_draw_axis(TRUE),
+                      variant = paste0("R", getRversion()[, 1:2]))
 })
 
 test_that("supports `grob` objects (#36)", {

@@ -10,7 +10,8 @@ expect_doppelganger(
   path = deprecated(),
   ...,
   writer = write_svg,
-  cran = FALSE
+  cran = FALSE,
+  variant = NULL
 )
 }
 \arguments{
@@ -59,6 +60,8 @@ package.
 
 Internally, this argument is passed to
 \code{\link[testthat:expect_snapshot_file]{testthat::expect_snapshot_file()}}.}
+
+\item{variant}{see testthat}
 }
 \description{
 \code{expect_doppelganger()} is a testthat expectation for graphical
